@@ -96,6 +96,9 @@ const addTodolist=(title:string)=>{
 		setTasks({...tasks,[todolistID]:tasks[todolistID].map(t=>t.id === taskId ? {...t, title:newTitle}: t)  })
 
 	}
+	 const upDateTodolist=(todolistId: string, title: string)=>{
+		 setTodolists(todolists.map(el=>el.id ===todolistId ?{...el, title } : el ))
+	 }
 	return (
 		<div className="App">
 			<AddItemForm  addItem={addTodolist} />
@@ -125,6 +128,7 @@ const addTodolist=(title:string)=>{
 					filter={tl.filter}
 					removeTodolist={removeTodolist}
 					upDatetask={upDatetask}
+					upDateTodolist={upDateTodolist}
 				/>
 			})}
 		</div>

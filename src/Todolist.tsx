@@ -15,6 +15,8 @@ type PropsType = {
 	filter: FilterValuesType
 	removeTodolist: (todolistId: string) => void
 	upDatetask: (todolistID: string, taskId: string, newTitle: string) => void
+	upDateTodolist: (todolistId: string, title: string) => void
+
 }
 
 export const Todolist = (props: PropsType) => {
@@ -28,7 +30,8 @@ export const Todolist = (props: PropsType) => {
 		changeTaskStatus,
 		todolistId,
 		removeTodolist,
-		upDatetask
+		upDatetask,
+		upDateTodolist
 	} = props
 
 
@@ -43,17 +46,20 @@ export const Todolist = (props: PropsType) => {
 	const removeTodolistHandler = () => {
 		removeTodolist(todolistId)
 	}
-
+	const upDateTodolisthandler = (newTitle: string) => {
+		upDateTodolist(todolistId, newTitle)
+	}
+	const upDatetaskhandler = (id:string, newTitle: string) => {
+		upDatetask(todolistId, id, newTitle)
+	}
 	return (
 		<div>
 			<div className={"todolist-title-container"}>
 				{/*//<h3>{title}</h3>*/}
 				<h3>
-					{/*<EdittableSpan*/}
-					{/*	oldTytle={title}*/}
-					{/*	onchange={(newValue: string) => {*/}
-					{/*	}}*/}
-					{/*/>*/}
+					<EdittableSpan addNewTitle={upDateTodolisthandler}
+					               oldTytle={title} onchange={(newValue: string) => {
+					}}/>
 				</h3>
 				<Button title={'x'} onClick={removeTodolistHandler}/>
 			</div>
@@ -75,14 +81,14 @@ export const Todolist = (props: PropsType) => {
 								const newStatusValue = e.currentTarget.checked
 								changeTaskStatus(task.id, newStatusValue, todolistId)
 							}
-							const upDatetaskhandler = (newTitle: string) => {
-								upDatetask(todolistId, task.id, newTitle)
-							}
+							// const upDatetaskhandler = (newTitle: string) => {
+							// 	upDatetask(todolistId, task.id, newTitle)
+							// }
 
 							return <li key={task.id} className={task.isDone ? 'is-done' : ''}>
 								<input type="checkbox" checked={task.isDone} onChange={changeTaskStatusHandler}/>
 								{/*<span>{task.title}</span>*/}
-								<EdittableSpan addNewTitle={upDatetaskhandler}
+								<EdittableSpan addNewTitle={(newTitle)=>upDatetaskhandler(task.id, newTitle)}
 								               oldTytle={task.title} onchange={(newValue: string) => {
 								}}/>
 								<Button onClick={removeTaskHandler} title={'x'}/>
