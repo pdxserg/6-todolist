@@ -91,6 +91,11 @@ const addTodolist=(title:string)=>{
 		setTasks({ ...tasks })
 	}
 
+	const upDatetask=(todolistID: string, taskId:string, newTitle:string)=>{
+
+		setTasks({...tasks,[todolistID]:tasks[todolistID].map(t=>t.id === taskId ? {...t, title:newTitle}: t)  })
+
+	}
 	return (
 		<div className="App">
 			<AddItemForm  addItem={addTodolist} />
@@ -107,6 +112,7 @@ const addTodolist=(title:string)=>{
 					tasksForTodolist = allTodolistTasks.filter(task => task.isDone)
 				}
 
+
 				return <Todolist
 					key={tl.id}
 					todolistId={tl.id}
@@ -118,6 +124,7 @@ const addTodolist=(title:string)=>{
 					changeTaskStatus={changeTaskStatus}
 					filter={tl.filter}
 					removeTodolist={removeTodolist}
+					upDatetask={upDatetask}
 				/>
 			})}
 		</div>
