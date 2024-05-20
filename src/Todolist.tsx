@@ -9,6 +9,8 @@ import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import Box from "@mui/material/Box";
+import {SxProps} from "@mui/material";
+import {filterButtonsContainerSx} from "./Todolist.styles";
 
 
 type PropsType = {
@@ -96,8 +98,10 @@ export const Todolist = (props: PropsType) => {
 							// }
 
 							return <ListItem key={task.id}
-							                 className={task.isDone ? 'is-done' : ''}
-							                 sx={{p:0, justifyContent:"space-between"}}
+							                 sx={{p: 0,
+								                 justifyContent: "space-between",
+								                 opacity: task.isDone ? 0.5 : 1
+							                 }}
 							>
 								<div>
 									<Checkbox defaultChecked color="success"
@@ -117,7 +121,7 @@ export const Todolist = (props: PropsType) => {
 						})}
 					</List>
 			}
-			<Box sx={{display: "flex", justifyContent: "space-between"}}>
+			<Box sx={filterButtonsContainerSx}>
 				<Button onClick={() => changeFilterTasksHandler('all')}
 				        variant={filter === 'all' ? 'outlined' : 'contained'}>
 					All</Button>
