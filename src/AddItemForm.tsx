@@ -1,7 +1,9 @@
 // @flow 
 import * as React from 'react';
-import {Button} from "./Button";
+
 import {ChangeEvent, KeyboardEvent, useState} from "react";
+import Button from '@mui/material/Button';
+
 
 type Props = {
 	addItem:(title: string)=>void
@@ -29,7 +31,7 @@ export const AddItemForm = ({addItem }: Props) => {
 		}
 	}
 
-
+const buttonStyle={maxHeight: "20px", minHeight:"20px", maxWidth: "20px",minWidth: "20px"}
 	return (
 		<div>
 			<input
@@ -38,7 +40,12 @@ export const AddItemForm = ({addItem }: Props) => {
 				onChange={changeItemTitleHandler}
 				onKeyUp={addTaskOnKeyUpHandler}
 			/>
-			<Button title={'+'} onClick={addItemHandler}/>
+			{/*<Button title={'+'} onClick={addItemHandler}/>*/}
+			<Button
+				size={"small"}
+				// style={buttonStyle}
+				variant="contained"
+				onClick={addItemHandler}>+</Button>
 			{error && <div className={'error-message'}>{error}</div>}
 		</div>
 	);
