@@ -95,7 +95,7 @@ export const Todolist = (props: PropsType) => {
 							// }
 
 							return <ListItem key={task.id} className={task.isDone ? 'is-done' : ''}>
-								<Checkbox  defaultChecked color="success"
+								<Checkbox defaultChecked color="success"
 								          checked={task.isDone} onChange={changeTaskStatusHandler}
 								/>
 								{/*<input type="checkbox" checked={task.isDone} onChange={changeTaskStatusHandler}/>*/}
