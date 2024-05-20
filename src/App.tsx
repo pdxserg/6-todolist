@@ -134,7 +134,7 @@ function App() {
 			</Box>
 
 			<Container fixed>
-				<Grid container spacing={2} sx={{ m: 2}}>
+				<Grid container spacing={2} sx={{ mb: 2}}>
 
 					<AddItemForm addItem={addTodolist}/>
 				</Grid><Grid container spacing={2}>

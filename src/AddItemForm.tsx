@@ -3,6 +3,8 @@ import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import {ChangeEvent, KeyboardEvent, useState} from "react";
 import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import AdjustIcon from '@mui/icons-material/Adjust';
 
 
 type Props = {
@@ -51,11 +53,15 @@ export const AddItemForm = ({addItem}: Props) => {
 			{/*	onKeyUp={addTaskOnKeyUpHandler}*/}
 			{/*/>*/}
 			{/*<Button title={'+'} onClick={addItemHandler}/>*/}
-			<Button
-				size={"small"}
+
+			<IconButton
+				size={"large"}
+				color={"primary"}
 				// style={buttonStyle}
-				variant="contained"
-				onClick={addItemHandler}>+</Button>
+				//variant="contained"
+				onClick={addItemHandler}>
+				<AdjustIcon/>
+				</IconButton>
 			{error && <div className={'error-message'}>{error}</div>}
 		</div>
 	);
