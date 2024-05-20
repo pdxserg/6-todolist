@@ -12,6 +12,8 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+
 
 import Container from '@mui/material/Container';
 export type TaskType = {
@@ -132,7 +134,7 @@ function App() {
 			</Box>
 
 			<Container fixed>
-				<Grid container spacing={2}>
+				<Grid container spacing={2} sx={{ m: 2}}>
 
 					<AddItemForm addItem={addTodolist}/>
 				</Grid><Grid container spacing={2}>
@@ -153,20 +155,23 @@ function App() {
 
 					return(
 						<Grid item >
-							<Todolist
-								key={tl.id}
-								todolistId={tl.id}
-								title={tl.title}
-								tasks={tasksForTodolist}
-								removeTask={removeTask}
-								changeFilter={changeFilter}
-								addTask={addTask}
-								changeTaskStatus={changeTaskStatus}
-								filter={tl.filter}
-								removeTodolist={removeTodolist}
-								upDatetask={upDatetask}
-								upDateTodolist={upDateTodolist}
-							/>
+							<Paper elevation={6} sx={{ p: 2}}>
+								<Todolist
+									key={tl.id}
+									todolistId={tl.id}
+									title={tl.title}
+									tasks={tasksForTodolist}
+									removeTask={removeTask}
+									changeFilter={changeFilter}
+									addTask={addTask}
+									changeTaskStatus={changeTaskStatus}
+									filter={tl.filter}
+									removeTodolist={removeTodolist}
+									upDatetask={upDatetask}
+									upDateTodolist={upDateTodolist}
+								/>
+							</Paper>
+
 						</Grid>
 					)
 				})}
