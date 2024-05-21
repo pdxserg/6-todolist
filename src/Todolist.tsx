@@ -10,7 +10,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import Box from "@mui/material/Box";
 import {SxProps} from "@mui/material";
-import {filterButtonsContainerSx} from "./Todolist.styles";
+import {filterButtonsContainerSx, getListItemSx} from "./Todolist.styles";
 
 
 type PropsType = {
@@ -98,10 +98,7 @@ export const Todolist = (props: PropsType) => {
 							// }
 
 							return <ListItem key={task.id}
-							                 sx={{p: 0,
-								                 justifyContent: "space-between",
-								                 opacity: task.isDone ? 0.5 : 1
-							                 }}
+							                 sx={getListItemSx(task.isDone)}
 							>
 								<div>
 									<Checkbox defaultChecked color="success"
